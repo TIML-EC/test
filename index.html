@@ -1,0 +1,79 @@
+<html><head><base href="https://www.typewriter.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vintage Typewriter Simulator</title>
+<style>
+  body {
+    font-family: 'Courier New', monospace;
+    background-color: #f0e6d2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .typewriter {
+    background-color: #8b4513;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+  #paper {
+    width: 300px;
+    height: 400px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  #input {
+    width: 100%;
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+  <div class="typewriter">
+    <div id="paper"></div>
+    <input type="text" id="input" placeholder="Type here...">
+  </div>
+
+  <script>
+    const paper = document.getElementById('paper');
+    const input = document.getElementById('input');
+
+    input.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        typeText(this.value);
+        this.value = '';
+      }
+    });
+
+    function typeText(text) {
+      let i = 0;
+      const typing = setInterval(() => {
+        if (i < text.length) {
+          paper.textContent += text[i];
+          i++;
+          playTypeSound();
+          paper.scrollTop = paper.scrollHeight;
+        } else {
+          clearInterval(typing);
+          paper.textContent += '\n';
+        }
+      }, 100);
+    }
+
+    function playTypeSound() {
+      const audio = new Audio('https://www.soundjay.com/mechanical/typewriter-1.mp3');
+      audio.play();
+    }
+  </script>
+</body></html>
