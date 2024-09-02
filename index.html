@@ -1,7 +1,7 @@
 <html><head><base href="https://www.typewriter.com/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vintage Typewriter Simulator</title>
+<title>Vintage Typewriter Simulator with Reset</title>
 <style>
   body {
     font-family: 'Courier New', monospace;
@@ -36,17 +36,33 @@
     font-family: inherit;
     font-size: 18px;
   }
+  #reset {
+    width: 100%;
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: 18px;
+    background-color: #d4a76a;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #reset:hover {
+    background-color: #c39355;
+  }
 </style>
 </head>
 <body>
   <div class="typewriter">
     <div id="paper"></div>
     <input type="text" id="input" placeholder="Type here...">
+    <button id="reset">Reset Typewriter</button>
   </div>
 
   <script>
     const paper = document.getElementById('paper');
     const input = document.getElementById('input');
+    const resetButton = document.getElementById('reset');
 
     input.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
@@ -54,6 +70,10 @@
         typeText(this.value);
         this.value = '';
       }
+    });
+
+    resetButton.addEventListener('click', function() {
+      resetTypewriter();
     });
 
     function typeText(text) {
@@ -73,6 +93,17 @@
 
     function playTypeSound() {
       const audio = new Audio('https://www.soundjay.com/mechanical/typewriter-1.mp3');
+      audio.play();
+    }
+
+    function resetTypewriter() {
+      paper.textContent = '';
+      input.value = '';
+      playResetSound();
+    }
+
+    function playResetSound() {
+      const audio = new Audio('https://www.soundjay.com/mechanical/typewriter-return-1.mp3');
       audio.play();
     }
   </script>
