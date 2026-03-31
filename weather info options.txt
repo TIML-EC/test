@@ -1,0 +1,20 @@
+在"url-input-container"內，"warning-options"右方增加"天氣資訊顯示選項"
+使用check-box，以下是check-box列表
+地區
+溫度
+濕度
+紫外線指數
+平均風速
+平均風向
+天氣圖示
+雷暴警告有效時間
+check-box列表是順序對應顯示"display-area"的"選擇地區"、"溫度"、
+"濕度"、"紫外線指數"、"平均風速"、"平均風向"及"weather-icon"及"thunderstorm-warning"
+
+////
+修改"天氣資訊顯示選項"在"警告接收選項"右旁位置
+
+////
+在"url-input-container"內右下角及在"套用更新"上方位置
+增加顯示"版本 2.4.0"，使用加粗字體及底線
+"版本 2.4.0"使用超連結https://raw.githubusercontent.com/TIML-EC/weather/main/README.md
